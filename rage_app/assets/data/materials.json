@@ -1,0 +1,54 @@
+[
+  {
+    "id": "digital_glass",
+    "name": "Dijital Cam",
+    "description": "Programcının en eski dostu. Etrafa saçılsın.",
+    "isPro": false,
+    "shardCount": 18,
+    "hapticProfile": "glass",
+    "soundAsset": "assets/audio/glass_break.wav",
+    "color": "#64B5F6",
+    "restitution": 0.3,
+    "friction": 0.2,
+    "density": 1.2
+  },
+  {
+    "id": "porcelain_vase",
+    "name": "Porselen Vazo",
+    "description": "Ofis köşesindeki anlamsız dekorasyon. PRO ile kır!",
+    "isPro": true,
+    "shardCount": 24,
+    "hapticProfile": "ceramic",
+    "soundAsset": "assets/audio/ceramic_break.wav",
+    "color": "#F5F5F5",
+    "restitution": 0.1,
+    "friction": 0.6,
+    "density": 2.0
+  },
+  {
+    "id": "crt_monitor",
+    "name": "Eski CRT Monitör",
+    "description": "Y2K kodunu derlemek zorunda kaldığında ideal seçim. PRO.",
+    "isPro": true,
+    "shardCount": 30,
+    "hapticProfile": "crt_monitor",
+    "soundAsset": "assets/audio/monitor_break.wav",
+    "color": "#37474F",
+    "restitution": 0.05,
+    "friction": 0.8,
+    "density": 3.5
+  },
+  {
+    "id": "bubble_wrap",
+    "name": "Balonlu Naylon",
+    "description": "TUBITAK deadline sonrası zihin temizleyici. PRO.",
+    "isPro": true,
+    "shardCount": 40,
+    "hapticProfile": "bubble_wrap",
+    "soundAsset": "assets/audio/bubble_pop.wav",
+    "color": "#E1F5FE",
+    "restitution": 0.6,
+    "friction": 0.1,
+    "density": 0.3
+  }
+]
