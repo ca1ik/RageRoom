@@ -47,11 +47,11 @@ class RageSessionRepository implements RageSessionRepositoryInterface {
     try {
       final userId = _source.currentUser?.uid;
       if (userId == null) {
-        return const Left(Failure('Kullanıcı oturumu yok'));
+        return const Left(Failure('No user session'));
       }
       final existing = await _source.getSession(userId, sessionId);
       if (existing == null) {
-        return const Left(Failure('Seans bulunamadı'));
+        return const Left(Failure('Session not found'));
       }
       final updated = RageSessionModel(
         id: existing.id,

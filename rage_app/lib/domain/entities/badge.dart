@@ -2,81 +2,110 @@
 // "Zero Bug Tolerance" gamification rozetleri domain entity.
 
 import 'package:equatable/equatable.dart';
+import 'package:rage_app/core/l10n/app_strings.dart';
 
 /// Kullanıcının kazandığı rozeti temsil eder.
 class Badge extends Equatable {
   const Badge({
     required this.id,
-    required this.title,
-    required this.description,
+    required this.titleKey,
+    required this.descriptionKey,
     required this.iconEmoji,
     required this.requiredBreaks,
     this.earnedAt,
   });
 
   final String id;
-  final String title;
-  final String description;
+  final String titleKey;
+  final String descriptionKey;
   final String iconEmoji;
-  final int
-  requiredBreaks; // Bu rozeti kazanmak için gereken minimum kırım sayısı
+  final int requiredBreaks;
   final DateTime? earnedAt;
+
+  String get title => _resolveTitle(titleKey);
+  String get description => _resolveDescription(descriptionKey);
 
   bool get isEarned => earnedAt != null;
 
   @override
-  List<Object?> get props => [id, title, earnedAt];
+  List<Object?> get props => [id, titleKey, earnedAt];
+
+  static String _resolveTitle(String key) {
+    return switch (key) {
+      'first_rage' => AppStrings.badgeFirstRageTitle,
+      'syntax_error_slayer' => AppStrings.badgeSyntaxSlayerTitle,
+      'deadline_survivor' => AppStrings.badgeDeadlineTitle,
+      'tubitak_warrior' => AppStrings.badgeTubitakTitle,
+      'century_destroyer' => AppStrings.badgeCenturyTitle,
+      'zen_master' => AppStrings.badgeZenTitle,
+      'pro_unlocked' => AppStrings.badgeProTitle,
+      _ => key,
+    };
+  }
+
+  static String _resolveDescription(String key) {
+    return switch (key) {
+      'first_rage' => AppStrings.badgeFirstRageDesc,
+      'syntax_error_slayer' => AppStrings.badgeSyntaxSlayerDesc,
+      'deadline_survivor' => AppStrings.badgeDeadlineDesc,
+      'tubitak_warrior' => AppStrings.badgeTubitakDesc,
+      'century_destroyer' => AppStrings.badgeCenturyDesc,
+      'zen_master' => AppStrings.badgeZenDesc,
+      'pro_unlocked' => AppStrings.badgeProDesc,
+      _ => key,
+    };
+  }
 
   /// Tüm olası rozetlerin statik listesi.
   static List<Badge> get allBadges => [
-    const Badge(
-      id: 'first_rage',
-      title: 'İlk Deşarj',
-      description: 'İlk rage seansını tamamladın. Burası bir başlangıç.',
-      iconEmoji: '💥',
-      requiredBreaks: 1,
-    ),
-    const Badge(
-      id: 'syntax_error_slayer',
-      title: 'Syntax Error Slayer',
-      description: '50 nesneyi kırdın. Compiler sana hak verecek.',
-      iconEmoji: '⚔️',
-      requiredBreaks: 50,
-    ),
-    const Badge(
-      id: 'deadline_survivor',
-      title: 'Deadline Survivor',
-      description: '3 tam seansı zamanlayıcı bitene dek sürdürdün.',
-      iconEmoji: '🏆',
-      requiredBreaks: 100,
-    ),
-    const Badge(
-      id: 'tubitak_warrior',
-      title: 'TÜBİTAK Warrior',
-      description: 'Şiddetli baskı altında 200 kırım. Savaşçısın.',
-      iconEmoji: '🧪',
-      requiredBreaks: 200,
-    ),
-    const Badge(
-      id: 'century_destroyer',
-      title: 'Century Destroyer',
-      description: '500 kırım. Klavyeye değil, uygulamaya vuruyorsun. İyi.',
-      iconEmoji: '💣',
-      requiredBreaks: 500,
-    ),
-    const Badge(
-      id: 'zen_master',
-      title: 'Zen Master',
-      description: 'Rage seansından sonra meditasyon modunda 60 saniye kaldın.',
-      iconEmoji: '🧘',
-      requiredBreaks: 0,
-    ),
-    const Badge(
-      id: 'pro_unlocked',
-      title: 'PRO Yükselişi',
-      description: 'PRO üyeliğini etkinleştirdin. Tam güç serbest.',
-      iconEmoji: '👑',
-      requiredBreaks: 0,
-    ),
-  ];
+        const Badge(
+          id: 'first_rage',
+          titleKey: 'first_rage',
+          descriptionKey: 'first_rage',
+          iconEmoji: '💥',
+          requiredBreaks: 1,
+        ),
+        const Badge(
+          id: 'syntax_error_slayer',
+          titleKey: 'syntax_error_slayer',
+          descriptionKey: 'syntax_error_slayer',
+          iconEmoji: '⚔️',
+          requiredBreaks: 50,
+        ),
+        const Badge(
+          id: 'deadline_survivor',
+          titleKey: 'deadline_survivor',
+          descriptionKey: 'deadline_survivor',
+          iconEmoji: '🏆',
+          requiredBreaks: 100,
+        ),
+        const Badge(
+          id: 'tubitak_warrior',
+          titleKey: 'tubitak_warrior',
+          descriptionKey: 'tubitak_warrior',
+          iconEmoji: '🧪',
+          requiredBreaks: 200,
+        ),
+        const Badge(
+          id: 'century_destroyer',
+          titleKey: 'century_destroyer',
+          descriptionKey: 'century_destroyer',
+          iconEmoji: '💣',
+          requiredBreaks: 500,
+        ),
+        const Badge(
+          id: 'zen_master',
+          titleKey: 'zen_master',
+          descriptionKey: 'zen_master',
+          iconEmoji: '🧘',
+          requiredBreaks: 0,
+        ),
+        const Badge(
+          id: 'pro_unlocked',
+          titleKey: 'pro_unlocked',
+          descriptionKey: 'pro_unlocked',
+          iconEmoji: '👑',
+          requiredBreaks: 0,
+        ),
+      ];
 }

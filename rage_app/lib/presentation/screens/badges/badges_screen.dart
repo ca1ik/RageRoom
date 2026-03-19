@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:rage_app/app/theme/app_theme.dart';
+import 'package:rage_app/core/l10n/app_strings.dart';
 import 'package:rage_app/domain/entities/badge.dart' as domain;
 import 'package:rage_app/presentation/widgets/badge_widget.dart';
 
@@ -17,7 +18,7 @@ class BadgesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppTheme.darkSurface,
       appBar: AppBar(
-        title: const Text('ROZETLER'),
+        title: Text(AppStrings.badgesTitle),
         backgroundColor: AppTheme.darkSurface,
         foregroundColor: AppTheme.electricBlue,
       ),

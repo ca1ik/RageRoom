@@ -2,6 +2,8 @@
 // Uygulamanın tüm sabit değerleri burada tanımlanır.
 // ignore_for_file: avoid_classes_with_only_static_members
 
+import 'package:rage_app/core/l10n/app_strings.dart';
+
 /// Uygulama genelindeki sabitler.
 abstract class AppConstants {
   // ── App ───────────────────────────────────────────────────────────────────
@@ -98,10 +100,10 @@ enum RageMaterialType {
 
   String get displayName {
     return switch (this) {
-      RageMaterialType.digitalGlass => 'Dijital Cam',
-      RageMaterialType.porcelainVase => 'Porselen Vazo',
-      RageMaterialType.crtMonitor => 'Eski CRT Monitör',
-      RageMaterialType.bubbleWrap => 'Balonlu Naylon',
+      RageMaterialType.digitalGlass => AppStrings.digitalGlass,
+      RageMaterialType.porcelainVase => AppStrings.porcelainVase,
+      RageMaterialType.crtMonitor => AppStrings.crtMonitor,
+      RageMaterialType.bubbleWrap => AppStrings.bubbleWrap,
     };
   }
 }

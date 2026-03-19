@@ -10,6 +10,7 @@ import 'package:rage_app/core/constants/app_constants.dart';
 import 'package:rage_app/presentation/blocs/monetization/monetization_cubit.dart';
 import 'package:rage_app/presentation/blocs/monetization/monetization_state.dart';
 import 'package:rage_app/presentation/controllers/rage_controller.dart';
+import 'package:rage_app/core/l10n/app_strings.dart';
 import 'package:rage_app/presentation/providers/material_provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -87,9 +88,9 @@ class HomeScreen extends StatelessWidget {
         children: [
           _buildProBanner(context),
           const SizedBox(height: 24),
-          const Text(
-            'MATERYAL SEÇ',
-            style: TextStyle(
+          Text(
+            AppStrings.chooseMaterial,
+            style: const TextStyle(
               color: Color(0x80FFFFFF),
               fontSize: 11,
               letterSpacing: 3,
@@ -120,25 +121,25 @@ class HomeScreen extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Row(
+            child: Row(
               children: [
-                Text('👑', style: TextStyle(fontSize: 24)),
-                SizedBox(width: 12),
+                const Text('👑', style: TextStyle(fontSize: 24)),
+                const SizedBox(width: 12),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'PRO\'ya Yüksel',
-                        style: TextStyle(
+                        AppStrings.upgradeToPro,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
                       ),
                       Text(
-                        'CRT Monitör, Porselen Vazo ve daha fazlası',
-                        style: TextStyle(
+                        AppStrings.proBannerSubtitle,
+                        style: const TextStyle(
                           color: Color(0xCCFFFFFF),
                           fontSize: 11,
                         ),
@@ -146,7 +147,8 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Icon(Icons.arrow_forward_ios, color: Colors.white, size: 16),
+                const Icon(Icons.arrow_forward_ios,
+                    color: Colors.white, size: 16),
               ],
             ),
           ),
@@ -269,24 +271,26 @@ class HomeScreen extends StatelessWidget {
         color: AppTheme.darkCard,
         borderRadius: BorderRadius.circular(12),
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '📊 İSTATİSTİKLER',
-            style: TextStyle(
+            AppStrings.statistics,
+            style: const TextStyle(
               color: Color(0x80FFFFFF),
               fontSize: 10,
               letterSpacing: 2,
             ),
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _StatItem(label: 'Toplam Kırım', value: '0', emoji: '💥'),
-              _StatItem(label: 'Seanslar', value: '0', emoji: '⏱️'),
-              _StatItem(label: 'Rozetler', value: '0', emoji: '🏅'),
+              _StatItem(
+                  label: AppStrings.totalBreaksLabel, value: '0', emoji: '💥'),
+              _StatItem(
+                  label: AppStrings.sessionsLabel, value: '0', emoji: '⏱️'),
+              _StatItem(label: AppStrings.badgesLabel, value: '0', emoji: '🏅'),
             ],
           ),
         ],
@@ -308,9 +312,9 @@ class HomeScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          child: const Text(
-            '💥  3 DAKİKA DEŞARJ OL',
-            style: TextStyle(
+          child: Text(
+            AppStrings.startButton,
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w900,
               letterSpacing: 2,

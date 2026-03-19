@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:rage_app/app/theme/app_theme.dart';
 import 'package:rage_app/core/constants/app_constants.dart';
+import 'package:rage_app/core/l10n/app_strings.dart';
 import 'package:rage_app/presentation/blocs/monetization/monetization_cubit.dart';
 import 'package:rage_app/presentation/blocs/monetization/monetization_state.dart';
 
@@ -30,8 +31,8 @@ class PaywallScreen extends StatelessWidget {
           if (state is MonetizationPurchaseSuccess) {
             Get.back<void>();
             Get.snackbar(
-              '🎉 PRO Aktif!',
-              'Tüm özellikler açıldı. Tam deşarj zamanı!',
+              AppStrings.proActiveSnackTitle,
+              AppStrings.proActiveSnackMessage,
               backgroundColor: const Color(0xFF1B5E20),
               colorText: Colors.white,
               snackPosition: SnackPosition.BOTTOM,
@@ -70,9 +71,9 @@ class PaywallScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  const Text(
-                    'Sınırsız deşarj. Sınırsız güç.',
-                    style: TextStyle(
+                  Text(
+                    AppStrings.proSubtitle,
+                    style: const TextStyle(
                       color: Colors.white54,
                       fontSize: 14,
                       letterSpacing: 0.5,
@@ -82,12 +83,15 @@ class PaywallScreen extends StatelessWidget {
                   const SizedBox(height: 40),
 
                   // PRO Özellikleri
-                  _buildFeature(Icons.all_inclusive, 'Sınırsız Seans'),
-                  _buildFeature(Icons.palette_outlined, 'Özel Arkaplanlar'),
+                  _buildFeature(
+                      Icons.all_inclusive, AppStrings.unlimitedSessions),
+                  _buildFeature(
+                      Icons.palette_outlined, AppStrings.customBackgrounds),
                   _buildFeature(Icons.monitor, 'CRT Monitor & Bubble Wrap'),
                   _buildFeature(
-                      Icons.auto_awesome, 'Gelişmiş Parçacık Efektleri'),
-                  _buildFeature(Icons.ad_units_outlined, 'Reklamsız Deneyim'),
+                      Icons.auto_awesome, AppStrings.advancedParticleEffects),
+                  _buildFeature(
+                      Icons.ad_units_outlined, AppStrings.adFreeExperience),
 
                   const Spacer(flex: 2),
 
@@ -100,8 +104,8 @@ class PaywallScreen extends StatelessWidget {
                           context.read<MonetizationCubit>().activateLocalPro();
                           Get.back<void>();
                           Get.snackbar(
-                            'PRO Aktif',
-                            'Test modu: PRO ozellikleri acildi.',
+                            AppStrings.proActiveTest,
+                            AppStrings.proActiveTestMessage,
                             backgroundColor: const Color(0xFF1B5E20),
                             colorText: Colors.white,
                             snackPosition: SnackPosition.BOTTOM,
@@ -116,9 +120,9 @@ class PaywallScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(14),
                           ),
                         ),
-                        child: const Text(
-                          'PRO\'ya Yukselt (Test)',
-                          style: TextStyle(
+                        child: Text(
+                          AppStrings.upgradeToProTest,
+                          style: const TextStyle(
                             fontWeight: FontWeight.w900,
                             fontSize: 16,
                           ),
@@ -130,9 +134,9 @@ class PaywallScreen extends StatelessWidget {
                   ] else if (state is MonetizationPurchasing) ...[
                     const CircularProgressIndicator(color: Colors.amber),
                     const SizedBox(height: 12),
-                    const Text(
-                      'İşlem devam ediyor...',
-                      style: TextStyle(color: Colors.white38),
+                    Text(
+                      AppStrings.transactionInProgress,
+                      style: const TextStyle(color: Colors.white38),
                     ),
                   ] else if (state is MonetizationPro) ...[
                     Container(
@@ -142,14 +146,14 @@ class PaywallScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         border: Border.all(color: Colors.amber),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.check_circle, color: Colors.amber),
-                          SizedBox(width: 8),
+                          const Icon(Icons.check_circle, color: Colors.amber),
+                          const SizedBox(width: 8),
                           Text(
-                            'PRO Aktif!',
-                            style: TextStyle(
+                            AppStrings.proActive,
+                            style: const TextStyle(
                               color: Colors.amber,
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
@@ -168,9 +172,9 @@ class PaywallScreen extends StatelessWidget {
                       onPressed: () {
                         context.read<MonetizationCubit>().restorePurchases();
                       },
-                      child: const Text(
-                        'Satın alımları geri yükle',
-                        style: TextStyle(
+                      child: Text(
+                        AppStrings.restorePurchasesLink,
+                        style: const TextStyle(
                           color: Colors.white38,
                           fontSize: 12,
                           decoration: TextDecoration.underline,
@@ -181,10 +185,9 @@ class PaywallScreen extends StatelessWidget {
                   const SizedBox(height: 8),
 
                   // Yasal linkler
-                  const Text(
-                    'Ödeme iTunes hesabınızdan yapılır. '
-                    'Abonelik, süresi dolmadan 24 saat önce iptal edilmedikçe otomatik yenilenir.',
-                    style: TextStyle(color: Colors.white24, fontSize: 10),
+                  Text(
+                    AppStrings.legalText,
+                    style: const TextStyle(color: Colors.white24, fontSize: 10),
                     textAlign: TextAlign.center,
                   ),
 
@@ -222,9 +225,9 @@ class PaywallScreen extends StatelessWidget {
   Widget _buildPackageList(BuildContext context, Offerings offerings) {
     final current = offerings.current;
     if (current == null) {
-      return const Text(
-        'Şu anda paket bulunamadı.',
-        style: TextStyle(color: Colors.white38),
+      return Text(
+        AppStrings.noPackagesAvailable,
+        style: const TextStyle(color: Colors.white38),
       );
     }
 

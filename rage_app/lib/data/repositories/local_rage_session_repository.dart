@@ -10,13 +10,15 @@ class LocalRageSessionRepository implements RageSessionRepositoryInterface {
   final Map<String, int> _totalBreaksByUser = <String, int>{};
 
   @override
-  Future<Either<Failure, RageSession>> createSession(RageSession session) async {
+  Future<Either<Failure, RageSession>> createSession(
+      RageSession session) async {
     _sessionsById[session.id] = session;
     return Right(session);
   }
 
   @override
-  Future<Either<Failure, RageSession>> updateSession(RageSession session) async {
+  Future<Either<Failure, RageSession>> updateSession(
+      RageSession session) async {
     _sessionsById[session.id] = session;
     return Right(session);
   }
@@ -29,7 +31,7 @@ class LocalRageSessionRepository implements RageSessionRepositoryInterface {
   }) async {
     final existing = _sessionsById[sessionId];
     if (existing == null) {
-      return const Left(Failure('Seans bulunamadi'));
+      return const Left(Failure('Session not found'));
     }
 
     final finalized = existing.copyWith(
@@ -45,7 +47,8 @@ class LocalRageSessionRepository implements RageSessionRepositoryInterface {
   }
 
   @override
-  Future<Either<Failure, List<RageSession>>> getUserSessions(String userId) async {
+  Future<Either<Failure, List<RageSession>>> getUserSessions(
+      String userId) async {
     final sessions = _sessionsById.values
         .where((session) => session.userId == userId)
         .toList()

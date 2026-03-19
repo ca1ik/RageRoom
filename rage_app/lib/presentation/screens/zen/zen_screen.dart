@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:rage_app/app/theme/app_theme.dart';
 import 'package:rage_app/core/constants/app_constants.dart';
+import 'package:rage_app/core/l10n/app_strings.dart';
 import 'package:rage_app/presentation/blocs/rage_session/rage_session_bloc.dart';
 import 'package:rage_app/presentation/blocs/rage_session/rage_session_event.dart';
 import 'package:rage_app/presentation/blocs/rage_session/rage_session_state.dart';
@@ -62,9 +63,9 @@ class _ZenScreenState extends State<ZenScreen> {
 
                       const SizedBox(height: 32),
 
-                      const Text(
-                        'NEFES AL',
-                        style: TextStyle(
+                      Text(
+                        AppStrings.breathe,
+                        style: const TextStyle(
                           color: AppTheme.zenLavender,
                           fontSize: 28,
                           fontWeight: FontWeight.w300,
@@ -74,9 +75,9 @@ class _ZenScreenState extends State<ZenScreen> {
 
                       const SizedBox(height: 8),
 
-                      const Text(
-                        'Kırılan şeyler yerli yerine oturdu.\nŞimdi sen de otur.',
-                        style: TextStyle(
+                      Text(
+                        AppStrings.zenMessage,
+                        style: const TextStyle(
                           color: Color(0x80FFFFFF),
                           fontSize: 14,
                           height: 1.7,
@@ -114,7 +115,7 @@ class _ZenScreenState extends State<ZenScreen> {
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 14),
                               ),
-                              child: const Text('Ana Menü'),
+                              child: Text(AppStrings.homeMenu),
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -134,7 +135,7 @@ class _ZenScreenState extends State<ZenScreen> {
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 14),
                               ),
-                              child: const Text('Tekrar Oyna'),
+                              child: Text(AppStrings.playAgain),
                             ),
                           ),
                         ],
@@ -163,12 +164,18 @@ class _ZenScreenState extends State<ZenScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _ZenStat(emoji: '💥', value: state.totalBreaks, label: 'Kırım'),
-          _ZenStat(emoji: '✨', value: state.totalShards, label: 'Parça'),
+          _ZenStat(
+              emoji: '💥',
+              value: state.totalBreaks,
+              label: AppStrings.zenBreaks),
+          _ZenStat(
+              emoji: '✨',
+              value: state.totalShards,
+              label: AppStrings.zenShards),
           _ZenStat(
             emoji: '⏱️',
             value: AppConstants.sessionDurationSeconds - state.remainingSeconds,
-            label: 'Saniye',
+            label: AppStrings.zenSeconds,
           ),
         ],
       ),

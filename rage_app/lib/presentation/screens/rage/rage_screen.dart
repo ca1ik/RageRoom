@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:rage_app/app/theme/app_theme.dart';
 import 'package:rage_app/core/constants/app_constants.dart';
+import 'package:rage_app/core/l10n/app_strings.dart';
 import 'package:rage_app/presentation/blocs/rage_session/rage_session_bloc.dart';
 import 'package:rage_app/presentation/blocs/rage_session/rage_session_event.dart';
 import 'package:rage_app/presentation/blocs/rage_session/rage_session_state.dart';
@@ -128,9 +129,9 @@ class _RageScreenState extends State<RageScreen> {
                     color: AppTheme.rageCrimson.withValues(alpha: 0.85),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Text(
-                    '⚡ SON ŞANS! DEVAM ET!',
-                    style: TextStyle(
+                  child: Text(
+                    AppStrings.lastChance,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w900,
                       letterSpacing: 2,
@@ -142,13 +143,13 @@ class _RageScreenState extends State<RageScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   _CountBadge(
-                    label: 'KIRIM',
+                    label: AppStrings.breaks,
                     value: state.totalBreaks.toString(),
                     color: AppTheme.rageCrimson,
                   ),
                   const SizedBox(width: 12),
                   _CountBadge(
-                    label: 'PARÇA',
+                    label: AppStrings.shards,
                     value: state.totalShards.toString(),
                     color: AppTheme.electricBlue,
                   ),

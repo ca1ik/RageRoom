@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rage_app/core/constants/app_constants.dart';
+import 'package:rage_app/core/l10n/app_strings.dart';
 import 'package:rage_app/core/services/haptic_service.dart';
 // flutter/material.dart ve app_constants.dart aynı anda kullanılır.
 // Çakışma yoktur: Flutter'ın MaterialType'ı, bizimki RageMaterialType.
@@ -49,7 +50,7 @@ class RageController extends GetxController {
   /// Genel başarı snackbar'ı.
   void showSuccessSnack(String message) {
     Get.snackbar(
-      '✅ Tamamlandı',
+      AppStrings.completed,
       message,
       backgroundColor: const Color(0xFF1B5E20).withValues(alpha: 0.9),
       colorText: Colors.white,
@@ -62,7 +63,7 @@ class RageController extends GetxController {
   /// Hata snackbar'ı.
   void showErrorSnack(String message) {
     Get.snackbar(
-      '❌ Hata',
+      AppStrings.error,
       message,
       backgroundColor: const Color(0xFFB71C1C).withValues(alpha: 0.9),
       colorText: Colors.white,
@@ -77,7 +78,7 @@ class RageController extends GetxController {
         backgroundColor: const Color(0xFF1A0A2E),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(
-          '$badgeEmoji Yeni Rozet!',
+          AppStrings.newBadge(badgeEmoji),
           style: const TextStyle(
             color: Colors.amber,
             fontWeight: FontWeight.bold,
@@ -93,7 +94,8 @@ class RageController extends GetxController {
         actions: [
           TextButton(
             onPressed: () => Get.back<void>(),
-            child: const Text('Harika!', style: TextStyle(color: Colors.amber)),
+            child: Text(AppStrings.awesome,
+                style: const TextStyle(color: Colors.amber)),
           ),
         ],
       ),
@@ -107,22 +109,23 @@ class RageController extends GetxController {
       AlertDialog(
         backgroundColor: const Color(0xFF1A0A2E),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text(
-          '👑 PRO Özellik',
-          style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
+        title: Text(
+          AppStrings.proFeature,
+          style:
+              const TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
-        content: const Text(
-          'Bu özellik PRO plan gerektirir. Tam deşarj olmak için PRO\'ya yüksel!',
-          style: TextStyle(color: Colors.white70),
+        content: Text(
+          AppStrings.proRequiredMessage,
+          style: const TextStyle(color: Colors.white70),
           textAlign: TextAlign.center,
         ),
         actions: [
           TextButton(
             onPressed: () => Get.back<void>(),
-            child: const Text(
-              'Belki Sonra',
-              style: TextStyle(color: Colors.white38),
+            child: Text(
+              AppStrings.maybeLater,
+              style: const TextStyle(color: Colors.white38),
             ),
           ),
           ElevatedButton(
@@ -134,7 +137,7 @@ class RageController extends GetxController {
               backgroundColor: Colors.amber,
               foregroundColor: Colors.black,
             ),
-            child: const Text('PRO\'ya Yüksel'),
+            child: Text(AppStrings.upgradeToPro),
           ),
         ],
       ),

@@ -93,7 +93,7 @@ class ApiClient implements ApiClientInterface {
       return ApiResult.success(templates);
     } on DioException catch (e) {
       return ApiResult.failure(
-        e.response?.statusMessage ?? e.message ?? 'Bilinmeyen ağ hatası',
+        e.response?.statusMessage ?? e.message ?? 'Unknown network error',
       );
     }
   }
@@ -105,7 +105,7 @@ class ApiClient implements ApiClientInterface {
       return ApiResult.success(BackgroundTemplate.fromJson(response.data!));
     } on DioException catch (e) {
       return ApiResult.failure(
-        e.response?.statusMessage ?? e.message ?? 'Bilinmeyen ağ hatası',
+        e.response?.statusMessage ?? e.message ?? 'Unknown network error',
       );
     }
   }

@@ -40,7 +40,7 @@ class RageApp extends StatelessWidget {
           create: (_) => MaterialProvider(),
         ),
         ChangeNotifierProvider<SettingsProvider>(
-          create: (_) => SettingsProvider(prefs),
+          create: (_) => SettingsProvider(prefs)..restoreLanguage(),
         ),
       ],
       child: MultiBlocProvider(

@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:rage_app/app/theme/app_theme.dart';
 import 'package:rage_app/core/constants/app_constants.dart';
+import 'package:rage_app/core/l10n/app_strings.dart';
 import 'package:rage_app/data/sources/firebase_source.dart';
 import 'package:rage_app/presentation/blocs/monetization/monetization_cubit.dart';
 import 'package:rage_app/presentation/providers/material_provider.dart';
@@ -21,32 +22,36 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppTheme.darkSurface,
       appBar: AppBar(
-        title: const Text('AYARLAR'),
+        title: Text(AppStrings.settingsTitle),
         backgroundColor: AppTheme.darkSurface,
         foregroundColor: AppTheme.electricBlue,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          _buildSection('SES & HAPTİK', [
+          _buildSection(AppStrings.soundHaptic, [
             _buildSoundToggle(context),
             _buildHapticToggle(context),
             _buildParticleSlider(context),
           ]),
           const SizedBox(height: 24),
-          _buildSection('PRO ÖZELLİKLER', [
+          _buildSection(AppStrings.proFeatures, [
             _buildCustomBackgroundTile(context),
           ]),
           const SizedBox(height: 24),
           if (AppConstants.enableFirebase) ...[
-            _buildSection('HESAP', [
+            _buildSection(AppStrings.account, [
               _buildGoogleSignInTile(context),
               _buildSignOutTile(context),
             ]),
             const SizedBox(height: 24),
           ],
-          _buildSection('ABONELIK', [
+          _buildSection(AppStrings.subscription, [
             _buildRestorePurchasesTile(context),
+          ]),
+          const SizedBox(height: 24),
+          _buildSection(AppStrings.language, [
+            _buildLanguageToggle(context),
           ]),
         ],
       ),
@@ -82,9 +87,10 @@ class SettingsScreen extends StatelessWidget {
   Widget _buildSoundToggle(BuildContext context) {
     final provider = context.watch<MaterialProvider>();
     return SwitchListTile(
-      title: const Text('Ses Efektleri', style: TextStyle(color: Colors.white)),
-      subtitle: const Text('Kırılma sesleri',
-          style: TextStyle(color: Colors.white38)),
+      title: Text(AppStrings.soundEffects,
+          style: const TextStyle(color: Colors.white)),
+      subtitle: Text(AppStrings.breakingSounds,
+          style: const TextStyle(color: Colors.white38)),
       value: provider.soundEnabled,
       onChanged: (v) => provider.toggleSound(enabled: v),
       activeThumbColor: AppTheme.electricBlue,
@@ -94,10 +100,10 @@ class SettingsScreen extends StatelessWidget {
   Widget _buildHapticToggle(BuildContext context) {
     final provider = context.watch<MaterialProvider>();
     return SwitchListTile(
-      title: const Text('Haptik Geri Bildirim',
-          style: TextStyle(color: Colors.white)),
-      subtitle: const Text('Titreşim profilleri',
-          style: TextStyle(color: Colors.white38)),
+      title: Text(AppStrings.hapticFeedback,
+          style: const TextStyle(color: Colors.white)),
+      subtitle: Text(AppStrings.vibrationProfiles,
+          style: const TextStyle(color: Colors.white38)),
       value: provider.hapticEnabled,
       onChanged: (v) => provider.toggleHaptic(enabled: v),
       activeThumbColor: AppTheme.electricBlue,
@@ -107,8 +113,8 @@ class SettingsScreen extends StatelessWidget {
   Widget _buildParticleSlider(BuildContext context) {
     final provider = context.watch<MaterialProvider>();
     return ListTile(
-      title: const Text('Parçacık Yoğunluğu',
-          style: TextStyle(color: Colors.white)),
+      title: Text(AppStrings.particleIntensity,
+          style: const TextStyle(color: Colors.white)),
       subtitle: Slider(
         value: provider.particleIntensity,
         min: 0.5,
@@ -126,11 +132,12 @@ class SettingsScreen extends StatelessWidget {
 
     return ListTile(
       leading: const Icon(Icons.image_outlined, color: AppTheme.electricBlue),
-      title: const Text('Özel Arkaplan', style: TextStyle(color: Colors.white)),
+      title: Text(AppStrings.customBackground,
+          style: const TextStyle(color: Colors.white)),
       subtitle: Text(
         settingsProvider.customBackgroundPath != null
-            ? 'Özel görsel seçildi'
-            : 'Kendi ekran görüntünü kullan',
+            ? AppStrings.customImageSelected
+            : AppStrings.useYourOwnScreenshot,
         style: const TextStyle(color: Colors.white38, fontSize: 12),
       ),
       trailing: cubit.isPro
@@ -167,10 +174,10 @@ class SettingsScreen extends StatelessWidget {
     return ListTile(
       leading: const Icon(Icons.account_circle_outlined,
           color: AppTheme.electricBlue),
-      title: const Text('Google ile Giriş Yap',
-          style: TextStyle(color: Colors.white)),
-      subtitle: const Text('İstatistiklerini senkronize et',
-          style: TextStyle(color: Colors.white38, fontSize: 12)),
+      title: Text(AppStrings.signInWithGoogle,
+          style: const TextStyle(color: Colors.white)),
+      subtitle: Text(AppStrings.syncYourStats,
+          style: const TextStyle(color: Colors.white38, fontSize: 12)),
       onTap: () async {
         final source = Get.find<FirebaseSource>();
         await source.signInWithGoogle();
@@ -181,7 +188,8 @@ class SettingsScreen extends StatelessWidget {
   Widget _buildSignOutTile(BuildContext context) {
     return ListTile(
       leading: const Icon(Icons.logout, color: Colors.white38),
-      title: const Text('Çıkış Yap', style: TextStyle(color: Colors.white38)),
+      title: Text(AppStrings.signOut,
+          style: const TextStyle(color: Colors.white38)),
       onTap: () async {
         final source = Get.find<FirebaseSource>();
         await source.signOut();
@@ -192,11 +200,33 @@ class SettingsScreen extends StatelessWidget {
   Widget _buildRestorePurchasesTile(BuildContext context) {
     return ListTile(
       leading: const Icon(Icons.restore, color: AppTheme.electricBlue),
-      title: const Text('Satın Almaları Geri Yükle',
-          style: TextStyle(color: Colors.white)),
+      title: Text(AppStrings.restorePurchases,
+          style: const TextStyle(color: Colors.white)),
       onTap: () async {
         await context.read<MonetizationCubit>().restorePurchases();
       },
+    );
+  }
+
+  Widget _buildLanguageToggle(BuildContext context) {
+    final settingsProvider = context.watch<SettingsProvider>();
+    final currentLang = settingsProvider.language;
+    return ListTile(
+      leading: const Icon(Icons.language, color: AppTheme.electricBlue),
+      title: Text(AppStrings.languageLabel,
+          style: const TextStyle(color: Colors.white)),
+      subtitle: Text(
+        AppStrings.currentLanguage,
+        style: const TextStyle(color: Colors.white38, fontSize: 12),
+      ),
+      trailing: Switch(
+        value: currentLang == AppLanguage.tr,
+        activeColor: AppTheme.electricBlue,
+        onChanged: (isTurkish) {
+          final newLang = isTurkish ? AppLanguage.tr : AppLanguage.en;
+          settingsProvider.setLanguage(newLang);
+        },
+      ),
     );
   }
 }

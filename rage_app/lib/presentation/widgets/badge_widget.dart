@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:rage_app/app/theme/app_theme.dart';
+import 'package:rage_app/core/l10n/app_strings.dart';
 import 'package:rage_app/domain/entities/badge.dart' as domain;
 
 class BadgeWidget extends StatelessWidget {
@@ -81,7 +82,7 @@ class BadgeWidget extends StatelessWidget {
                 const SizedBox(height: 4),
                 // Gereksinim
                 Text(
-                  '${badge.requiredBreaks} kırım',
+                  AppStrings.breaksRequired(badge.requiredBreaks),
                   style: const TextStyle(
                     color: Color(0x50FFFFFF),
                     fontSize: 10,
