@@ -1,177 +1,177 @@
 # 🔥 Rage Room — Developer Stress Relief App
 
-> **Gerçek hayatta kıramıyorsan, dijital dünyada kır!**
+> **Can't break things in real life? Break them in the digital world!**
 >
-> Rage Room, yazılımcılar için tasarlanmış **fizik tabanlı stres atma uygulamasıdır.** 3 dakikalık yıkım seanslarında sanal nesneleri parçalayın, ardından Zen Modunda nefes alın. Flame + Forge2D fizik motoru, Clean Architecture, Firebase ve RevenueCat ile geliştirilmiştir.
+> Rage Room is a **physics-based stress relief application** designed for developers. Smash virtual objects in intense 3-minute destruction sessions, then unwind in Zen Mode. Built with Flame + Forge2D physics engine, Clean Architecture, Firebase, and RevenueCat.
 
 ---
 
-## 📑 İçindekiler
+## 📑 Table of Contents
 
-- [Özellikler](#-özellikler)
-- [Ekranlar](#-ekranlar)
-- [Oyun Mekaniği](#-oyun-mekaniği)
-- [Materyal Sistemi](#-materyal-sistemi)
-- [Rozet & Başarı Sistemi](#-rozet--başarı-sistemi)
-- [Mimari (Clean Architecture)](#-mimari-clean-architecture)
+- [Features](#-features)
+- [Screens](#-screens)
+- [Game Mechanics](#-game-mechanics)
+- [Material System](#-material-system)
+- [Badge & Achievement System](#-badge--achievement-system)
+- [Architecture (Clean Architecture)](#-architecture-clean-architecture)
 - [State Management](#-state-management)
-- [Firebase Entegrasyonu](#-firebase-entegrasyonu)
-- [Monetizasyon (RevenueCat)](#-monetizasyon-revenuecat)
-- [Kullanılan Teknolojiler](#-kullanılan-teknolojiler)
-- [Kurulum](#-kurulum)
-- [Proje Yapısı](#-proje-yapısı)
+- [Firebase Integration](#-firebase-integration)
+- [Monetization (RevenueCat)](#-monetization-revenuecat)
+- [Tech Stack](#-tech-stack)
+- [Getting Started](#-getting-started)
+- [Project Structure](#-project-structure)
 
 ---
 
-## ✨ Özellikler
+## ✨ Features
 
-| Özellik | Açıklama |
-|---------|----------|
-| **Fizik Tabanlı Yıkım** | Forge2D motoru ile gerçekçi kırılma, sıçrama ve parçalanma simülasyonu |
-| **3 Dakikalık Seanslar** | Zamanlayıcılı yoğun stres atma oturumları |
-| **Zen Modu** | Yıkım sonrası sakinleştirici meditasyon ekranı |
-| **4 Farklı Materyal** | Dijital Cam, Porselen Vazo, CRT Monitör, Balonlu Naylon |
-| **7 Rozet / Başarı** | Kümülatif kırma sayısına dayalı başarı sistemi |
-| **Haptic Feedback** | Her materyale özel dokunsal geri bildirim profilleri |
-| **Ses Efektleri** | Materyal bazlı kırılma sesleri |
-| **Parçacık Sistemi** | Materyale göre farklı şekillerde (üçgen, çokgen, daire, kare) parçalanma |
-| **Google ile Giriş** | İstatistik senkronizasyonu |
-| **PRO Abonelik** | Ek materyaller, özel arka plan, gelişmiş efektler |
-| **Çevrimdışı Mod** | Firebase olmadan da tam oynanabilirlik |
-| **Crash Raporlama** | Firebase Crashlytics entegrasyonu |
+| Feature | Description |
+|---------|-------------|
+| **Physics-Based Destruction** | Realistic breaking, bouncing, and shattering simulation powered by Forge2D |
+| **3-Minute Sessions** | Timed, intense stress-relief sessions |
+| **Zen Mode** | Post-destruction calming meditation screen |
+| **4 Unique Materials** | Digital Glass, Porcelain Vase, CRT Monitor, Bubble Wrap |
+| **7 Badges / Achievements** | Achievement system based on cumulative break count |
+| **Haptic Feedback** | Material-specific tactile feedback profiles |
+| **Sound Effects** | Material-based breaking sounds |
+| **Particle System** | Material-specific shard shapes (triangles, polygons, circles, squares) |
+| **Google Sign-In** | Stats synchronization across devices |
+| **PRO Subscription** | Extra materials, custom backgrounds, advanced effects |
+| **Offline Mode** | Fully playable without Firebase |
+| **Crash Reporting** | Firebase Crashlytics integration |
 
 ---
 
-## 📱 Ekranlar
+## 📱 Screens
 
 ### 🌊 Splash Screen
-- 1.8 saniyelik animasyonlu açılış
-- Firebase başlatma (opsiyonel)
-- Anonim kimlik doğrulama
-- RevenueCat abonelik durumu kontrolü
+- 1.8-second animated loading with logo/title
+- Firebase initialization (optional)
+- Anonymous authentication
+- RevenueCat subscription status check
 
-### 🏠 Home Screen (Ana Menü)
-- 2×2 materyal seçim gridi
-- PRO materyaller için kilit göstergesi
-- İstatistik kartı: toplam kırma, seans sayısı, rozet özeti
-- Rozet ve Ayarlar ekranlarına navigasyon
+### 🏠 Home Screen
+- 2×2 material selection grid
+- Lock indicator for PRO-only materials
+- Stats card: total breaks, session count, badge summary
+- Navigation to Badges & Settings screens
 
-### 💥 Rage Screen (Oyun Ekranı)
-- Tam ekran Flame oyun widget'ı (60 FPS)
-- Üst overlay: geri butonu, dairesel geri sayım (3 dakika), materyal ikonu
-- Alt overlay: kırma sayacı, parça sayacı
-- Son 10 saniyede **"SON ŞANS!"** kırmızı uyarı
-- Gerçek zamanlı fizik tabanlı yıkım
+### 💥 Rage Screen (Main Game)
+- Full-screen Flame game widget (60 FPS)
+- Top overlay: back button, circular countdown timer (3 min), material icon
+- Bottom overlay: break counter, shard counter
+- **"LAST CHANCE!"** red alert during final 10 seconds
+- Real-time physics-based destruction
 
-### 🧘 Zen Screen (Meditasyon)
-- Koyu mor tonlarında sakinleştirici arayüz
-- **"NEFES AL"** meditasyon mesajı
-- Seans özeti: toplam kırma, toplam parça, geçen süre
-- Motivasyon metni ve emoji animasyonu
-- "Ana Menü" veya "Tekrar Oyna" seçenekleri
+### 🧘 Zen Screen (Meditation)
+- Calming dark purple UI
+- **"BREATHE"** meditation message
+- Session summary: total breaks, total shards, time spent
+- Motivational text & emoji animation
+- "Home" or "Play Again" options
 
-### 🏅 Badges Screen (Rozetler)
-- 7 başarı rozetinin grid görünümü
-- Kilitli (gri + kilit ikonu) / Kazanılmış (vurgulu) durum gösterimi
-- Her rozet: emoji, başlık, gerekli kırma sayısı
+### 🏅 Badges Screen
+- Grid view of 7 achievement badges
+- Locked (grayed + lock icon) / Earned (highlighted) states
+- Each badge: emoji, title, required break count
 
-### ⚙️ Settings Screen (Ayarlar)
-- Ses ve haptic açma/kapama
-- Parçacık yoğunluğu slider'ı
-- Özel arka plan seçici (PRO)
-- Google ile giriş (istatistik senkronizasyonu)
-- Satın alma geri yükleme
-- Hukuki bilgiler
+### ⚙️ Settings Screen
+- Audio & haptic toggles
+- Particle intensity slider
+- Custom background picker (PRO only)
+- Google Sign-In for stats sync
+- Restore purchases button
+- Legal information
 
 ### 💎 Paywall Screen (PRO)
-- PRO özellik listesi
-- Abonelik paketi seçimi (Aylık / Yıllık / Ömür Boyu)
-- Test modunda yerel PRO aktivasyonu
+- PRO feature list
+- Subscription package selection (Monthly / Yearly / Lifetime)
+- Local PRO activation in test mode
 
 ---
 
-## 🎮 Oyun Mekaniği
+## 🎮 Game Mechanics
 
-### Fizik Motoru: Flame + Forge2D
+### Physics Engine: Flame + Forge2D
 
-| Parametre | Değer |
+| Parameter | Value |
 |-----------|-------|
-| Yerçekimi | -10 birim/sn² |
-| Fizik Zoom | 10 (1 birim = 10 piksel) |
-| Hedef FPS | 60 |
-| Seans Süresi | 180 saniye |
+| Gravity | -10 units/sec² |
+| Physics Zoom | 10 (1 unit = 10 pixels) |
+| Target FPS | 60 |
+| Session Duration | 180 seconds |
 
-### Etkileşim Akışı
+### Interaction Flow
 
 ```
-Kullanıcı Dokunuşu
+User Tap
   │
-  ├─ Nesne Bulundu → Kır!
-  │   ├─ Parçaları üret (materyale özgü şekiller)
-  │   ├─ Dokunma noktasından radyal impuls uygula
-  │   ├─ Haptic feedback tetikle
-  │   ├─ RageSessionObjectBroken event yayınla
-  │   └─ 800ms sonra yeni nesne spawn et
+  ├─ Object Found → Break it!
+  │   ├─ Spawn shards (material-specific shapes)
+  │   ├─ Apply radial impulse from tap point
+  │   ├─ Trigger haptic feedback
+  │   ├─ Emit RageSessionObjectBroken event
+  │   └─ Respawn new object after 800ms
   │
-  └─ Boş Alan → Şok dalgası efekti
-      └─ Tüm görünür nesnelere kuvvet uygula
+  └─ Empty Space → Shockwave effect
+      └─ Apply force to all visible objects
 ```
 
-### Oyun Bileşenleri
+### Game Components
 
-| Bileşen | Görev |
-|---------|-------|
-| `WorldBoundaries` | Statik kenarlar (zemin, duvarlar, tavan) |
-| `BreakableObject` | Dokunulduğunda parçalanan dinamik 2D nesneler |
-| `ShardParticle` | Yıkım sonrası fizik tabanlı parçacıklar (8 sn ömür) |
-| `BackgroundComponent` | Gradient veya özel görsel arka plan |
+| Component | Purpose |
+|-----------|---------|
+| `WorldBoundaries` | Static edges (ground, walls, ceiling) for containment |
+| `BreakableObject` | Dynamic 2D rect objects that shatter on tap |
+| `ShardParticle` | Physics-based particles spawned on destruction (8s lifespan) |
+| `BackgroundComponent` | Gradient or custom image background layer |
 
-### Parçacık Sistemi
+### Particle System
 
-Her materyal için farklı parça şekilleri:
-- 🪟 **Cam** → Üçgen kırıklar
-- 🏺 **Porselen** → Düzensiz çokgen parçalar
-- 🖥️ **CRT** → Küçük kareler
-- 🫧 **Balonlu Naylon** → Daireler
+Material-specific shard shapes:
+- 🪟 **Glass** → Triangle fragments
+- 🏺 **Porcelain** → Irregular polygon chunks
+- 🖥️ **CRT** → Small squares
+- 🫧 **Bubble Wrap** → Circles
 
-Parçacık yaşam süresi: **8 saniye** (son 2 saniyede solma efekti)
-
----
-
-## 🧱 Materyal Sistemi
-
-Dört farklı materyal, her biri kendine özgü fizik parametreleriyle:
-
-| Materyal | Parça | Sıçrama | Sürtünme | Yoğunluk | PRO? | Açıklama |
-|----------|-------|---------|----------|----------|------|----------|
-| 🪟 Dijital Cam | 18 | 0.3 | 0.2 | 1.2 | ❌ | Hafif, sıçrar, uzağa uçar |
-| 🏺 Porselen Vazo | 24 | 0.1 | 0.6 | 2.0 | ✅ | Yapışkan, yakına ufalanır |
-| 🖥️ CRT Monitör | 30 | 0.05 | 0.8 | 3.5 | ✅ | Ağır, sıçramaz, düz düşer |
-| 🫧 Balonlu Naylon | 40 | 0.6 | 0.1 | 0.3 | ✅ | Süper sıçrar, kaotik hareket |
-
-Materyallerin tam fizik konfigürasyonu `assets/data/materials.json` dosyasında tanımlıdır.
+Particle lifespan: **8 seconds** (opacity fade during last 2 seconds)
 
 ---
 
-## 🏅 Rozet & Başarı Sistemi
+## 🧱 Material System
 
-Tüm seanslar boyunca **kümülatif toplam kırma** sayısına göre 7 rozet:
+Four unique materials, each with distinct physics parameters:
 
-| # | Rozet | Koşul |
-|---|-------|-------|
-| 💥 | **First Rage** | 1+ kırma |
-| ⚔️ | **Syntax Error Slayer** | 50+ kırma |
-| 🏆 | **Deadline Survivor** | 100+ kırma |
-| 🧪 | **TÜBİTAK Warrior** | 200+ kırma |
-| 💣 | **Century Destroyer** | 500+ kırma |
-| 🧘 | **Zen Master** | Zen modunda 60+ saniye kalma |
-| 👑 | **PRO Unlocked** | PRO plan satın alma |
+| Material | Shards | Restitution | Friction | Density | PRO? | Behavior |
+|----------|--------|-------------|----------|---------|------|----------|
+| 🪟 Digital Glass | 18 | 0.3 | 0.2 | 1.2 | ❌ | Light, bouncy, flies far |
+| 🏺 Porcelain Vase | 24 | 0.1 | 0.6 | 2.0 | ✅ | Sticky, crumbles nearby |
+| 🖥️ CRT Monitor | 30 | 0.05 | 0.8 | 3.5 | ✅ | Heavy, no bounce, falls straight |
+| 🫧 Bubble Wrap | 40 | 0.6 | 0.1 | 0.3 | ✅ | Super bouncy, chaotic movement |
+
+Full physics configuration is defined in `assets/data/materials.json`.
 
 ---
 
-## 🏛️ Mimari (Clean Architecture)
+## 🏅 Badge & Achievement System
 
-Proje, katmanlı **Clean Architecture** prensipleriyle yapılandırılmıştır:
+7 badges based on **cumulative total breaks** across all sessions:
+
+| # | Badge | Requirement |
+|---|-------|-------------|
+| 💥 | **First Rage** | 1+ breaks |
+| ⚔️ | **Syntax Error Slayer** | 50+ breaks |
+| 🏆 | **Deadline Survivor** | 100+ breaks |
+| 🧪 | **TÜBİTAK Warrior** | 200+ breaks |
+| 💣 | **Century Destroyer** | 500+ breaks |
+| 🧘 | **Zen Master** | Stay in Zen Mode for 60+ seconds |
+| 👑 | **PRO Unlocked** | Purchase PRO plan |
+
+---
+
+## 🏛️ Architecture (Clean Architecture)
+
+The project follows a layered **Clean Architecture** pattern:
 
 ```
 ┌──────────────────────────────────────────────────┐
@@ -179,105 +179,105 @@ Proje, katmanlı **Clean Architecture** prensipleriyle yapılandırılmıştır:
 │   Screens • Widgets • BLoCs • Providers          │
 │   Controllers (GetX)                             │
 ├──────────────────────────────────────────────────┤
-│          Domain Layer (İş Mantığı)               │
-│   Entities • Repository Arayüzleri • Use Cases   │
+│          Domain Layer (Business Logic)           │
+│   Entities • Repository Interfaces • Use Cases   │
 ├──────────────────────────────────────────────────┤
-│          Data Layer (Veri Kaynakları)             │
-│   Models • Repository Uygulamaları               │
+│          Data Layer (Data Sources)               │
+│   Models • Repository Implementations            │
 │   Firebase Source • Local Repository             │
 ├──────────────────────────────────────────────────┤
-│          Game Layer (Oyun Motoru)                 │
+│          Game Layer (Game Engine)                 │
 │   RageGame (Forge2D) • Components                │
 ├──────────────────────────────────────────────────┤
-│          Core Layer (Altyapı)                    │
+│          Core Layer (Infrastructure)             │
 │   DI (GetIt) • Services • Network (Dio)          │
 │   Constants                                      │
 └──────────────────────────────────────────────────┘
 ```
 
-### Klasör Yapısı
+### Folder Structure
 
 ```
 lib/
-├── main.dart                 # Uygulama giriş noktası
+├── main.dart                 # Application entry point
 ├── app/
-│   ├── app.dart              # Root widget, Provider/BLoC/GetX kurulumu
-│   ├── routes/               # GetX route tanımları
-│   └── theme/                # Rage ve Zen temaları
+│   ├── app.dart              # Root widget, Provider/BLoC/GetX setup
+│   ├── routes/               # GetX route definitions
+│   └── theme/                # Rage & Zen themes
 ├── core/
-│   ├── constants/            # Sabitler ve konfigürasyon
+│   ├── constants/            # App constants & configuration
 │   ├── di/                   # GetIt dependency injection
 │   ├── network/              # Dio HTTP client
 │   └── services/             # Haptic service
 ├── data/
-│   ├── models/               # Firestore modelleri
-│   ├── repositories/         # Repository uygulamaları
-│   └── sources/              # Firebase veri kaynağı
+│   ├── models/               # Firestore data models
+│   ├── repositories/         # Repository implementations
+│   └── sources/              # Firebase data source
 ├── domain/
-│   ├── entities/             # RageSession, Badge entity'leri
-│   ├── repositories/         # Repository arayüzleri
+│   ├── entities/             # RageSession, Badge entities
+│   ├── repositories/         # Repository interfaces
 │   └── usecases/             # StartSession, SaveSession
 ├── game/
-│   ├── rage_game.dart        # Flame/Forge2D oyun sınıfı
-│   └── components/           # BreakableObject, ShardParticle, vb.
+│   ├── rage_game.dart        # Flame/Forge2D game class
+│   └── components/           # BreakableObject, ShardParticle, etc.
 └── presentation/
     ├── blocs/                # RageSessionBloc, MonetizationCubit
     ├── controllers/          # GetX RageController
     ├── providers/            # MaterialProvider, SettingsProvider
-    ├── screens/              # 7 ekran
-    └── widgets/              # TimerWidget, BadgeWidget, vb.
+    ├── screens/              # 7 screens
+    └── widgets/              # TimerWidget, BadgeWidget, etc.
 ```
 
 ---
 
 ## 🔄 State Management
 
-Proje **hibrit state management** yaklaşımı kullanır:
+The project uses a **hybrid state management** approach:
 
-### 📦 Flutter BLoC — Oyun Oturum Yönetimi
+### 📦 Flutter BLoC — Game Session Management
 
-**RageSessionBloc** seans yaşam döngüsünü yönetir:
+**RageSessionBloc** manages the session lifecycle:
 
 ```
 SessionPhase: idle → raging → ending → saving → zen
 ```
 
-| Event | Açıklama |
-|-------|----------|
-| `RageSessionStarted` | Seansı başlat, Firestore'da döküman oluştur |
-| `RageSessionObjectBroken` | Kırma ve parça sayaçlarını güncelle |
-| `RageSessionTimerTicked` | Geri sayımı güncelle, <10s'de "ending" fazı |
-| `RageSessionEnded` | Rozetleri hesapla, Firestore'a kaydet, Zen moduna geç |
-| `RageSessionReset` | Tüm sayaçları sıfırla |
+| Event | Description |
+|-------|-------------|
+| `RageSessionStarted` | Start session, create Firestore document |
+| `RageSessionObjectBroken` | Update break and shard counters |
+| `RageSessionTimerTicked` | Update countdown, transition to "ending" at <10s |
+| `RageSessionEnded` | Calculate badges, save to Firestore, enter Zen Mode |
+| `RageSessionReset` | Reset all counters |
 
-**MonetizationCubit** abonelik durumunu yönetir:
-- `MonetizationFree` / `MonetizationPro` durumları
-- Satın alma, geri yükleme, test modu aktivasyonu
+**MonetizationCubit** manages subscription state:
+- `MonetizationFree` / `MonetizationPro` states
+- Purchase, restore, and test mode activation
 
-### 🔔 Provider (ChangeNotifier) — Ayar ve Tercihler
+### 🔔 Provider (ChangeNotifier) — Settings & Preferences
 
-- **MaterialProvider**: Seçili materyal, ses/haptic toggle, parçacık yoğunluğu
-- **SettingsProvider**: Özel arka plan, bildirim, oturum sayısı (SharedPreferences)
+- **MaterialProvider**: Selected material, sound/haptic toggles, particle intensity
+- **SettingsProvider**: Custom background, notifications, session count (SharedPreferences)
 
 ### ⚡ GetX — Global Utility Controller
 
-- **RageController**: Observable materyal seçimi, oyun durumu, UI geri bildirim tetikleyicileri
+- **RageController**: Observable material selection, game state, UI feedback triggers
 
 ---
 
-## 🔥 Firebase Entegrasyonu
+## 🔥 Firebase Integration
 
-| Servis | Kullanım |
-|--------|----------|
-| **Firebase Auth** | Anonim giriş + Google Sign-In |
-| **Cloud Firestore** | Seans verileri, kullanıcı istatistikleri, rozet takibi |
-| **Firebase Crashlytics** | Release modda hata yakalama ve raporlama |
+| Service | Usage |
+|---------|-------|
+| **Firebase Auth** | Anonymous sign-in + Google Sign-In |
+| **Cloud Firestore** | Session data, user statistics, badge tracking |
+| **Firebase Crashlytics** | Error catching & reporting in release mode |
 
-### Firestore Şeması
+### Firestore Schema
 
 ```
 /users/{uid}
-  ├── totalBreaks: int              (atomik artış)
+  ├── totalBreaks: int              (atomic increment)
   └── /sessions/{sessionId}
         ├── userId: string
         ├── startedAt: Timestamp
@@ -290,179 +290,179 @@ SessionPhase: idle → raging → ending → saving → zen
         └── customImagePath: string?
 ```
 
-> **Not:** `AppConstants.enableFirebase = false` yapılarak Firebase olmadan geliştirme yapılabilir. Bu durumda yerel in-memory repository kullanılır.
+> **Note:** Set `AppConstants.enableFirebase = false` to develop without Firebase. The app will use an in-memory local repository instead.
 
 ---
 
-## 💰 Monetizasyon (RevenueCat)
+## 💰 Monetization (RevenueCat)
 
 ### PRO Entitlement: `rage_pro`
 
-| Plan | Açıklama |
-|------|----------|
-| Aylık Abonelik | Aylık yenilenen PRO erişim |
-| Yıllık Abonelik | Yıllık indirimli PRO erişim |
-| Ömür Boyu | Tek seferlik kalıcı satın alma |
+| Plan | Description |
+|------|-------------|
+| Monthly Subscription | Recurring monthly PRO access |
+| Yearly Subscription | Discounted annual PRO access |
+| Lifetime | One-time permanent purchase |
 
-### PRO ile Açılan Özellikler
+### PRO Unlocked Features
 
-- ✅ 3 ek materyal (Porselen Vazo, CRT Monitör, Balonlu Naylon)
-- ✅ Özel arka plan görsel seçici
-- ✅ Gelişmiş parçacık efektleri
-- ✅ Reklamsız deneyim
-- ✅ PRO rozeti
+- ✅ 3 additional materials (Porcelain Vase, CRT Monitor, Bubble Wrap)
+- ✅ Custom background image picker
+- ✅ Advanced particle effects
+- ✅ Ad-free experience
+- ✅ PRO badge/status
 
-### Satın Alma Akışı
+### Purchase Flow
 
 ```
-PRO Materyal Seçimi → Kilit Kontrolü → ProRequiredDialog
-  → PaywallScreen → RevenueCat İşlem → PRO Aktivasyon
-  → "🎉 PRO Aktif! Tüm özellikler açıldı"
+Select PRO Material → Lock Check → ProRequiredDialog
+  → PaywallScreen → RevenueCat Transaction → PRO Activation
+  → "🎉 PRO Active! All features unlocked"
 ```
 
 ---
 
-## 🎨 Tema Sistemi
+## 🎨 Theme System
 
-Uygulama iki ayrı temaya sahiptir:
+The app features two distinct themes:
 
-### ⚡ Rage Teması (Oyun Sırasında)
+### ⚡ Rage Theme (During Gameplay)
 - **Primary:** Electric Blue `#00BCD4`
 - **Secondary:** Rage Crimson `#E53935`
 - **Surface:** Dark `#0A0A0F`
-- **Font:** RobotoMono (monospace, endüstriyel)
+- **Font:** RobotoMono (monospace, industrial feel)
 
-### 🧘 Zen Teması (Meditasyon Sırasında)
+### 🧘 Zen Theme (During Meditation)
 - **Primary:** Lavender `#CE93D8`
 - **Secondary:** Zen Purple `#7B1FA2`
 - **Surface:** Deep Dark `#080612`
-- **Font:** Roboto (hafif, temiz)
+- **Font:** Roboto (light, clean)
 
 ---
 
-## 🛠️ Kullanılan Teknolojiler
+## 🛠️ Tech Stack
 
-### Framework & Motor
-| Teknoloji | Versiyon | Kullanım Amacı |
-|-----------|----------|----------------|
+### Framework & Engine
+| Technology | Version | Purpose |
+|------------|---------|---------|
 | **Flutter** | SDK ≥3.4.0 | Cross-platform UI framework |
-| **Flame** | ^1.32.0 | 2D oyun motoru |
-| **Forge2D** | 0.14.0 | Box2D fizik motoru |
+| **Flame** | ^1.32.0 | 2D game engine |
+| **Forge2D** | 0.14.0 | Box2D physics engine |
 
 ### State Management
-| Teknoloji | Kullanım Amacı |
-|-----------|----------------|
-| **flutter_bloc** / **bloc** | Seans ve monetizasyon state yönetimi |
-| **Provider** | Ayar ve materyal tercihleri |
-| **GetX** | Route yönetimi, global controller, reaktif state |
+| Technology | Purpose |
+|------------|---------|
+| **flutter_bloc** / **bloc** | Session & monetization state management |
+| **Provider** | Settings & material preferences |
+| **GetX** | Route management, global controller, reactive state |
 
 ### Backend & Auth
-| Teknoloji | Kullanım Amacı |
-|-----------|----------------|
-| **Firebase Core** | Firebase altyapısı |
-| **Firebase Auth** | Anonim + Google kimlik doğrulama |
-| **Cloud Firestore** | NoSQL veritabanı |
-| **Firebase Crashlytics** | Hata raporlama |
+| Technology | Purpose |
+|------------|---------|
+| **Firebase Core** | Firebase infrastructure |
+| **Firebase Auth** | Anonymous + Google authentication |
+| **Cloud Firestore** | NoSQL database |
+| **Firebase Crashlytics** | Crash reporting |
 
-### Monetizasyon
-| Teknoloji | Kullanım Amacı |
-|-----------|----------------|
-| **RevenueCat (purchases_flutter)** | In-app purchase ve abonelik yönetimi |
+### Monetization
+| Technology | Purpose |
+|------------|---------|
+| **RevenueCat (purchases_flutter)** | In-app purchase & subscription management |
 
-### UI & Animasyon
-| Teknoloji | Kullanım Amacı |
-|-----------|----------------|
-| **flutter_animate** | Deklaratif widget animasyonları |
-| **Lottie** | JSON tabanlı vektör animasyonlar |
-| **cupertino_icons** | iOS tarzı ikonlar |
+### UI & Animation
+| Technology | Purpose |
+|------------|---------|
+| **flutter_animate** | Declarative widget animations |
+| **Lottie** | JSON-based vector animations |
+| **cupertino_icons** | iOS-style icons |
 
-### Veri & Depolama
-| Teknoloji | Kullanım Amacı |
-|-----------|----------------|
-| **SharedPreferences** | Anahtar-değer yerel depolama |
-| **Hive** | Hızlı NoSQL yerel veritabanı |
-| **Dio** | HTTP istemcisi |
+### Data & Storage
+| Technology | Purpose |
+|------------|---------|
+| **SharedPreferences** | Key-value local storage |
+| **Hive** | Fast NoSQL local database |
+| **Dio** | HTTP client |
 
-### Medya
-| Teknoloji | Kullanım Amacı |
-|-----------|----------------|
-| **audioplayers** | Ses efektleri |
-| **image_picker** | Galeri/kamera görsel seçici |
+### Media
+| Technology | Purpose |
+|------------|---------|
+| **audioplayers** | Sound effects playback |
+| **image_picker** | Gallery/camera image picker |
 
-### Mimari & Yardımcılar
-| Teknoloji | Kullanım Amacı |
-|-----------|----------------|
+### Architecture & Utilities
+| Technology | Purpose |
+|------------|---------|
 | **GetIt** | Service Locator / Dependency Injection |
-| **Injectable** | Otomatik DI kodu üretimi |
-| **Equatable** | Değer eşitliği karşılaştırması |
-| **dartz** | Fonksiyonel programlama (Either, Option) |
-| **freezed_annotation** | Immutable model sınıfları |
-| **json_annotation** | JSON serileştirme |
-| **uuid** | Benzersiz kimlik üreteci |
-| **intl** | Uluslararasılaştırma |
-| **logger** | Yapılandırılmış loglama |
+| **Injectable** | Automatic DI code generation |
+| **Equatable** | Value equality comparison |
+| **dartz** | Functional programming (Either, Option) |
+| **freezed_annotation** | Immutable model classes |
+| **json_annotation** | JSON serialization |
+| **uuid** | Unique ID generator |
+| **intl** | Internationalization |
+| **logger** | Structured logging |
 
 ---
 
-## 🚀 Kurulum
+## 🚀 Getting Started
 
-### Gereksinimler
+### Prerequisites
 - Flutter SDK ≥ 3.4.0
 - Dart SDK ≥ 3.4.0
-- Android Studio / Xcode (platform hedefine göre)
+- Android Studio / Xcode (depending on target platform)
 
-### Adımlar
+### Setup
 
 ```bash
-# 1. Repoyu klonla
+# 1. Clone the repository
 git clone https://github.com/<username>/RageRoom.git
 cd RageRoom/rage_app
 
-# 2. Bağımlılıkları yükle
+# 2. Install dependencies
 flutter pub get
 
-# 3. (Opsiyonel) Firebase yapılandırması
-# android/app/google-services.json dosyasını ekle
-# ios/Runner/GoogleService-Info.plist dosyasını ekle
-# Firebase olmadan çalıştırmak için AppConstants.enableFirebase = false
+# 3. (Optional) Firebase configuration
+# Add android/app/google-services.json
+# Add ios/Runner/GoogleService-Info.plist
+# To run without Firebase, set AppConstants.enableFirebase = false
 
-# 4. Uygulamayı çalıştır
+# 4. Run the app
 flutter run
 ```
 
-> **Not:** Firebase yapılandırması olmadan uygulama debug modda sorunsuz çalışır. Yerel in-memory repository ve test modu PRO aktivasyonu kullanılır.
+> **Note:** The app runs seamlessly in debug mode without Firebase configuration. It uses an in-memory local repository and test mode PRO activation.
 
 ---
 
-## 📂 Proje Yapısı
+## 📂 Project Structure
 
 ```
 rage_app/
 ├── assets/
-│   ├── animations/           # Lottie animasyon dosyaları
-│   ├── audio/                # Kırılma ses efektleri (glass, ceramic, monitor, bubble)
+│   ├── animations/           # Lottie animation files
+│   ├── audio/                # Breaking sound effects (glass, ceramic, monitor, bubble)
 │   ├── data/
-│   │   └── materials.json    # Materyal fizik konfigürasyonu
-│   └── images/               # Görseller ve arka planlar
-├── lib/                      # Uygulama kaynak kodu (Clean Architecture)
-├── test/                     # Unit ve widget testleri
-├── android/                  # Android platform kodu
-├── ios/                      # iOS platform kodu
-├── web/                      # Web platform kodu
-├── macos/                    # macOS platform kodu
-├── linux/                    # Linux platform kodu
-├── windows/                  # Windows platform kodu
-└── pubspec.yaml              # Proje bağımlılıkları
+│   │   └── materials.json    # Material physics configuration
+│   └── images/               # Images and backgrounds
+├── lib/                      # Application source code (Clean Architecture)
+├── test/                     # Unit & widget tests
+├── android/                  # Android platform code
+├── ios/                      # iOS platform code
+├── web/                      # Web platform code
+├── macos/                    # macOS platform code
+├── linux/                    # Linux platform code
+├── windows/                  # Windows platform code
+└── pubspec.yaml              # Project dependencies
 ```
 
 ---
 
-## 📄 Lisans
+## 📄 License
 
-Bu proje özel kullanım için geliştirilmiştir.
+This project is developed for private use.
 
 ---
 
 <p align="center">
-  <b>💥 Kırmak için dokunmanız yeterli. 🧘 Sonra nefes alın.</b>
+  <b>💥 Just tap to break. 🧘 Then breathe.</b>
 </p>
